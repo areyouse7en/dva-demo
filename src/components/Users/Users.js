@@ -5,7 +5,8 @@ import {
 import {
   Table,
   Pagination,
-  Popconfirm 
+  Popconfirm,
+  Button
 } from 'antd'
 import {routerRedux} from 'dva/router'
 import styles from './Users.css'
@@ -45,6 +46,14 @@ function Users({
     })
   }
 
+  // 新增
+  function createHandler(values){
+    dispatch({
+      type:'users/create',
+      payload:values
+    })
+  }
+
   const columns = [{
     title: 'Name',
     dataIndex: 'name',
@@ -73,6 +82,11 @@ function Users({
   return(
     <div className={styles.normal}>
       <div>
+        <div className={styles.create}>
+          <UserModal record={{}} onOk={createHandler}>
+            <Button type="primary">新增</Button>
+          </UserModal>
+        </div>
         <Table
           columns={columns}
           dataSource={dataSource}

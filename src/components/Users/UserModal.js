@@ -30,6 +30,7 @@ class UserEditModal extends Component{
     this.props.form.validateFields((err,values)=>{
       if(!err){
         onOk(values)
+        this.props.form.resetFields()
         this.hideModalHandler()
       }
     })
@@ -53,6 +54,7 @@ class UserEditModal extends Component{
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModalHandler}
+          afterClose={this.closeHandler}
         >
           <Form layout="horizontal" onSubmit={this.okHandler}>
             <FormItem
