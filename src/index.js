@@ -1,11 +1,22 @@
 import dva from 'dva'
+import {
+  browserHistory
+} from 'dva/router'
+import {
+  message
+} from 'antd'
+import createLoading from 'dva-loading'
 import './index.css'
 
 // 1. Initialize
-const app = dva()
+const app = dva({
+  history: browserHistory,
+  onError(e) {
+    message.error(e.message, 3)
+  }
+})
 
 // 2. Plugins
-import createLoading from 'dva-loading'
 app.use(createLoading())
 
 // 3. Model

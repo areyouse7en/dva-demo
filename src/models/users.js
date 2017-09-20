@@ -23,6 +23,9 @@ export default {
     }
   },
   effects: {
+    // put 用于触发 action 。
+    // call 用于调用异步逻辑，支持 promise 。
+    // select 用于从 state 里获取数据。
     * fetch({
       payload: {
         page = 1
